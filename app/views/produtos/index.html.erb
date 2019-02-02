@@ -4,8 +4,10 @@
     <meta charset="utf-8">
     <title></title>
   </head>
+  <%= nav_bar brand: "Loja", brand_link: root_url %>
+  <div class="container">
   <body>
-    <table>
+    <table class="table table-bordered table-hover">
       <thead>
         <tr>
           <td>Nome</td>
@@ -25,8 +27,10 @@
         <% end %>
       </tbody>
     </table>
-    <h3>Produto com desconto</h3>
-    <table>
+    <div class="alert alert-success" role="alert">
+      <h4 class="alert-heading">Produto com desconto</h4>
+    </div class="alert alert-success" role="alert">
+    <table class="table table-bordered table-hover">
       <thead>
         <tr>
           <td>Nome</td>
@@ -47,4 +51,5 @@
       </tbody>
     </table>
   </body>
+  </div class="container">
 </html>
