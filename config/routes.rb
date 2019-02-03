@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  get "produtos", to: "produtos#index"
+
+  resources :produtos, only: [:new, :create, :destroy]
+  root to: "produtos#index"
+
 end
