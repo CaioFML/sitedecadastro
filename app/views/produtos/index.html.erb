@@ -1,19 +1,10 @@
-<<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <%= nav_bar brand: "Loja", brand_link: root_url %>
-  <div class="container">
-  <body>
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
           <td>Nome</td>
           <td>Descrição</td>
           <td>Preço (R$)</td>
-          <<td>Quantidade</td>
+          <td>Quantidade</td>
         </tr>
       </thead>
       <tbody>
@@ -36,7 +27,7 @@
           <td>Nome</td>
           <td>Descrição</td>
           <td>Preço</td>
-          <<td>Quantidade</td>
+          <td>Quantidade</td>
         </tr>
       </thead>
       <tbody>
@@ -48,8 +39,4 @@
           <td><%= produto.quantidade %></td>
         </tr>
         <% end %>
-      </tbody>
     </table>
-  </body>
-  </div class="container">
-</html>
