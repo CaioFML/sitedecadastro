@@ -1,5 +1,9 @@
 class ProdutosController < ApplicationController
 
+  #Before action usado para melhorar o código e utilizar o metodo DRY.
+
+  before_action :set_produto, only: [:edit, :update, :destroy]
+
 #cria as funções e as chamadas de parametros
 
   def index
@@ -13,41 +17,30 @@ class ProdutosController < ApplicationController
   end
 
   def edit
-    id = params[:id]
-    @produto = Produto.find(id)
-    @departamentos = Departamento.all
-    render :new
+    renderiza
   end
 
   def update
-    id = params[:id]
-    @produto = Produto.find(id)
-    valores = params.require(:produto).permit(:nome,
-       :descricao, :preco, :quantidade, :departamento_id)
-       if @produto.update valores
+       if @produto.update produto_params
          flash[:notice] = "Produto atualizado com sucesso"
          redirect_to root_url
        else
-         @departamentos = Departamento.all
-         render :new
+         renderiza
        end
   end
 
   def create
-    valores = params.require(:produto).permit(:nome,
-       :descricao, :preco, :quantidade, :departamento_id)
-    @produto = Produto.new valores
+    @produto = Produto.new produto_params
     if @produto.save
       flash[:notice] = "Produto salvo com sucesso!"
       redirect_to root_url
     else
-      render :new
+      renderiza
     end
   end
 
   def destroy
-    id = params[:id]
-    Produto.destroy id
+    @produto.destroy
     redirect_to root_url
   end
 
@@ -55,4 +48,19 @@ class ProdutosController < ApplicationController
     @nome = params[:nome]
     @produtos = Produto.where "nome like ?", "%#{@nome}%"
   end
+
+  def produto_params
+    params.require(:produto).permit(:nome,
+       :descricao, :preco, :quantidade, :departamento_id)
+  end
+
+  def set_produto
+    @produto = Produto.find(params[:id])
+  end
+
+  def renderiza
+    @departamentos = Departamento.all
+    render :new
+  end
+
 end
