@@ -1,6 +1,6 @@
-<h1>Editing Departamento</h1>
+<h1>Editar Departamento</h1>
 
-<%= render 'form', departamento: @departamento %>
+<%= render partial: "form", locals: { texto_da_acao: "Editar departamento"}, class:"btn btn-primary" %>
 
-<%= link_to 'Show', @departamento %> |
-<%= link_to 'Back', departamentos_path %>
+<%= link_to 'Mostrar produtos', @departamento, class:"btn btn-default" %>
+<%= link_to 'Voltar', departamentos_path, class:"btn btn-default" %>

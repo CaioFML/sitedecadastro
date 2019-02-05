@@ -7,7 +7,7 @@ class ProdutosController < ApplicationController
 #cria as funções e as chamadas de parametros
 
   def index
-    @produtos = Produto.order(nome: :asc).limit 6
+    @produtos = Produto.order(nome: :asc).limit 20
     @produto_com_desconto = Produto.order(:preco).limit 1
   end
 
